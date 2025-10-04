@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,11 +17,13 @@
             border: 1px solid black;
         }
 
-        td, th {
+        td,
+        th {
             padding: 8px;
         }
     </style>
 </head>
+
 <body>
     <table id="statsTable">
         <tr>
@@ -75,6 +78,35 @@
         В div с id result выведите сообщение "Отдел 1 сделал больше продаж" или "Отдел 2 сделал больше продаж" на основе раннее вычисленных значений в строке "Итого".
         Используйте любые методы, которые были рассмотрены на в прошлых уроках.
         */
+        let table = document.getElementById("statsTable")
+
+        let sum1 = 0
+        let sum2 = 0
+
+        for (let i = 1; i < table.rows.length; i++) {
+            let row = table.rows[i]
+            sum1 += Number(row.cells[1].innerText)
+            sum2 += Number(row.cells[2].innerText)
+        }
+
+        let newRow = table.insertRow()
+        let cell0 = newRow.insertCell(0)
+        let cell1 = newRow.insertCell(1)
+        let cell2 = newRow.insertCell(2)
+
+        cell0.innerText = "Итого"
+        cell1.innerText = sum1
+        cell2.innerText = sum2
+
+        let resultDiv = document.getElementById("result")
+        if (sum1 > sum2) {
+            resultDiv.innerText = "Отдел 1 сделал больше продаж"
+        } else if (sum2 > sum1) {
+            resultDiv.innerText = "Отдел 2 сделал больше продаж"
+        } else {
+            resultDiv.innerText = "Оба отдела сделали одинаково продаж"
+        }
     </script>
 </body>
+
 </html>

@@ -16,7 +16,8 @@
             border: 1px solid black;
         }
 
-        td, th {
+        td,
+        th {
             padding: 8px;
         }
     </style>
@@ -64,6 +65,16 @@
         Если во второй ячейке значение больше 100, строка должна отображаться зеленым цветом, если значение менее 100 - красным цветом.
         Для смены цвета строки используйте код row.style.backgroundColor = "цвет"
         */
+        let table = document.getElementById("statsTable");
+        let output = document.getElementById("output");
+        output.innerText = 0;
+
+        for (let i = 0; i < table.rows.length - 1; i++) {
+            let value = Number(table.rows[i].cells[1].innerText);
+            table.rows[i].style.backgroundColor = "red";
+            if (value > 100) table.rows[i].style.backgroundColor = "green";
+            output.innerText = Number(output.innerText) + value;
+        }
     </script>
 </body>
 
